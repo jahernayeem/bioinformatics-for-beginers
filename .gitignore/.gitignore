@@ -1,0 +1,1029 @@
+#Use what you have learned to print the length of the Vibrio cholerae ori
+ori="ATCAATGATCAACGTAAGCTTCTAAGCATGATCAAGGTGCTCACACAGTTTATCCACAACCTGAGTGGATGACATCAAGATAGGTCGTTGTATCTCCTTCCTCTCGTACTCTCATGACCACGGAAAGATGATCAAGAGAGGATGATTTCTTGGCCATATCGCAATGAATACTTGTGACTTGTGCTTCCAATTGACATCTTCAGCGCCATATTGCGCTGGCCAAGGTGACGGAGCGGGATTACGAAAGCATGATCATGGCTGTTGTTCTGTTTATCTTGTTTTGACTGAGACTTGTTAGGATAGACGGTTTTTCATCACTGACTAGCCAAAGCCTTACTCTGCCTGACATCGACCGTAAATTGATAATGAATTTACATGCTTCCGCGACGATTTACCTCTTGATCATCGATCCGATTGAAGATCTTCAATTGTTAATTCTCTTGCCTCGACTCATAGCCATGATGAGCTCTTGATCATGTTTCCTTAACCCTCTATTTTTTACGGAAGAATGATCAAGCTGCTGCTCTTGATCATCGTTTC"
+print (len(ori))
+
+
+# Copy your PatternCount function from the previous step below this line
+def PatternCount(Text, Pattern):
+    count = 0
+    for i in range(len(Text)-len(Pattern)+1):
+        if Text[i:i+len(Pattern)] == Pattern:
+            count = count+1
+    return count
+
+# Now, set Text equal to the ori of Vibrio cholerae and Pattern equal to "TGATCA"
+Text = "ATCAATGATCAACGTAAGCTTCTAAGCATGATCAAGGTGCTCACACAGTTTATCCACAACCTGAGTGGATGACATCAAGATAGGTCGTTGTATCTCCTTCCTCTCGTACTCTCATGACCACGGAAAGATGATCAAGAGAGGATGATTTCTTGGCCATATCGCAATGAATACTTGTGACTTGTGCTTCCAATTGACATCTTCAGCGCCATATTGCGCTGGCCAAGGTGACGGAGCGGGATTACGAAAGCATGATCATGGCTGTTGTTCTGTTTATCTTGTTTTGACTGAGACTTGTTAGGATAGACGGTTTTTCATCACTGACTAGCCAAAGCCTTACTCTGCCTGACATCGACCGTAAATTGATAATGAATTTACATGCTTCCGCGACGATTTACCTCTTGATCATCGATCCGATTGAAGATCTTCAATTGTTAATTCTCTTGCCTCGACTCATAGCCATGATGAGCTCTTGATCATGTTTCCTTAACCCTCTATTTTTTACGGAAGAATGATCAAGCTGCTGCTCTTGATCATCGTTTC"
+Pattern = "TGATCA"
+
+# Finally, print the result of calling PatternCount on Text and Pattern.
+# Don't forget to use the notation print() with parentheses included!
+
+print (PatternCount(Text, Pattern))
+
+
+
+# Insert your completed FrequencyMap() function here.
+def FrequencyMap(Text, k):
+    # your code here
+    freq = {}
+    n = len(Text)
+    for i in range(n-k+1):
+        Pattern = Text[i:i+k]
+        freq[Pattern] = 0
+        count = 0
+        for j in range(n-k+1):
+            if Pattern == Text[j:j+k]:
+                count = count + 1
+        freq[Pattern] = count
+    return freq
+Text = "CGATATATCCATAG"
+k = 3
+freq = {}
+FrequencyMap(Text,int(k))
+
+
+
+# Input: A string Text and an integer k
+# Output: A list containing all most frequent k-mers in Text
+def FrequentWords(Text, k):
+    # your code here
+    words = []
+    freq = FrequencyMap(Text, k)
+    m = max(freq.values())
+    for key in freq:
+    # add each key to words whose corresponding frequency value is equal to m
+        if freq.get(key) == m:
+            words.append(key)
+    return words
+
+# Copy your FrequencyMap() function here.
+def FrequencyMap(Text, k):
+    # your code here.
+    freq = {}
+    n = len(Text)
+    for i in range(n-k+1):
+        Pattern = Text[i:i+k]
+        freq[Pattern] = 0
+        count = 0
+        for j in range(n-k+1):
+            if Pattern == Text[j:j+k]:
+                count = count + 1
+            freq[Pattern] = count
+    return freq
+FrequentWords("ACGTTGCATGTCGCATGATGCATGAGAGCT",4)
+
+
+
+# Copy your updated FrequentWords function (along with all required subroutines) below this line
+# Input: A string Text and an integer k
+# Output: A list containing all most frequent k-mers in Text
+def FrequentWords(Text, k):
+    # your code here
+    words = []
+    freq = FrequencyMap(Text, k)
+    m = max(freq.values())
+    for key in freq:
+    # add each key to words whose corresponding frequency value is equal to m
+        if freq.get(key) == m:
+            words.append(key)
+    return words
+
+# Copy your FrequencyMap() function here.
+def FrequencyMap(Text, k):
+    # your code here.
+    freq = {}
+    n = len(Text)
+    for i in range(n-k+1):
+        Pattern = Text[i:i+k]
+        freq[Pattern] = 0
+        count = 0
+        for j in range(n-k+1):
+            if Pattern == Text[j:j+k]:
+                count = count + 1
+            freq[Pattern] = count
+    return freq
+
+
+# Now set Text equal to the Vibrio cholerae oriC and k equal to 10
+Text = "ATCAATGATCAACGTAAGCTTCTAAGCATGATCAAGGTGCTCACACAGTTTATCCACAACCTGAGTGGATGACATCAAGATAGGTCGTTGTATCTCCTTCCTCTCGTACTCTCATGACCACGGAAAGATGATCAAGAGAGGATGATTTCTTGGCCATATCGCAATGAATACTTGTGACTTGTGCTTCCAATTGACATCTTCAGCGCCATATTGCGCTGGCCAAGGTGACGGAGCGGGATTACGAAAGCATGATCATGGCTGTTGTTCTGTTTATCTTGTTTTGACTGAGACTTGTTAGGATAGACGGTTTTTCATCACTGACTAGCCAAAGCCTTACTCTGCCTGACATCGACCGTAAATTGATAATGAATTTACATGCTTCCGCGACGATTTACCTCTTGATCATCGATCCGATTGAAGATCTTCAATTGTTAATTCTCTTGCCTCGACTCATAGCCATGATGAGCTCTTGATCATGTTTCCTTAACCCTCTATTTTTTACGGAAGAATGATCAAGCTGCTGCTCTTGATCATCGTTTC"
+k = 10
+
+# Finally, print the result of calling FrequentWords on Text and k.
+print (FrequentWords(Text, k))
+
+
+# Input:  A string Pattern
+# Output: The reverse of Pattern
+def Reverse(Pattern):
+        Pattern = Pattern[::-1]
+        return Pattern
+
+
+
+# Input:  A DNA string Pattern
+# Output: The complementary string of Pattern (with every nucleotide replaced by its complement).
+def Complement(Pattern):
+    # your code here
+    Pattern='AAAACCCGGT'
+    complement = {'A':'T', 'C':'G', 'G':'C', 'T':'A'}
+    return ''.join([complement[base] for base in Pattern])
+
+
+
+
+# Input:  A DNA string Pattern
+# Output: The reverse complement of Pattern
+def ReverseComplement(Pattern):
+    Pattern = Reverse(Pattern) # reverse all letters in a string
+    Pattern = Complement(Pattern) # complement each letter in a string
+    return Pattern  
+
+# Copy your Reverse() function here.
+    # your code here
+def Reverse(Pattern):
+        Pattern = Pattern[::-1]
+        return Pattern
+# Copy your Complement() function here.
+    # your code here
+def Complement(Pattern):
+    # your code here
+    basepairs = {"A":"T","G":"C","T":"A","C":"G"}
+    complement = ""
+    for base in Pattern:
+        complement += basepairs.get(base)
+    Pattern = complement
+    return complement
+
+ReverseComplement("AAAACCCGGT")
+
+
+
+# fill in your PatternMatching() function along with any subroutines that you need.
+def PatternMatching(Pattern, Genome):
+    positions = [] # output variable
+    for i in range(len(Genome)):
+        if (Pattern == Genome[i:i+len(Pattern)]):
+            positions += [i]
+    return positions
+    
+    
+    
+    # Copy your PatternMatching function below this line.
+def PatternMatching(Pattern, Genome):
+    positions = [] # output variable
+    for i in range(len(Genome)-len(Pattern)+1):
+        if Genome[i:i+len(Pattern)] == Pattern:
+            positions.append(i)
+    return positions
+
+# The following lines will automatically read in the Vibrio cholerae genome for you and store it in a variable named v_cholerae
+import sys                             # needed to read the genome
+input = sys.stdin.read().splitlines() #
+v_cholerae = input[1]                 # store the genome as 'v_cholerae'
+
+
+# Call PatternMatching with Pattern equal to "CTTGATCAT" and Genome equal to v_cholerae,
+def PatternMatching(CTTGATCAT, v_cholerae):
+    positions = [] # output variable
+    for i in range(len(v_cholerae)-len("CTTGATCAT")+1):
+        if v_cholerae[i:i+len("CTTGATCAT")] == "CTTGATCAT":
+            positions.append(i)
+    return positions
+# and store the output as a variable called positions
+positions = PatternMatching("CTTGATCAT", v_cholerae)
+
+# print the positions variable
+print(positions)
+
+
+
+# Copy your PatternCount function from the previous step below this line
+def PatternCount(Text, Pattern):
+    count = 0
+    for i in range(len(Text)-len(Pattern)+1):
+        if Text[i:i+len(Pattern)] == Pattern:
+            count = count+1
+    return count
+
+# Now, set Text equal to the ori of Vibrio cholerae and Pattern equal to "TGATCA"
+Text = "AACTCTATACCTCCTTTTTGTCGAATTTGTGTGATTTATAGAGAAAATCTTATTAACTGAAACTAAAATGGTAGGTTTGGTGGTAGGTTTTGTGTACATTTTGTAGTATCTGATTTTTAATTACATACCGTATATTGTATTAAATTGACGAACAATTGCATGGAATTGAATATATGCAAAACAAACCTACCACCAAACTCTGTATTGACCATTTTAGGACAACTTCAGGGTGGTAGGTTTCTGAAGCTCTCATCAATAGACTATTTTAGTCTTTACAAACAATATTACCGTTCAGATTCAAGATTCTACAACGCTGTTTTAATGGGCGTTGCAGAAAACTTACCACCTAAAATCCAGTATCCAAGCCGATTTCAGAGAAACCTACCACTTACCTACCACTTACCTACCACCCGGGTGGTAAGTTGCAGACATTATTAAAAACCTCATCAGAAGCTTGTTCAAAAATTTCAATACTCGAAACCTACCACCTGCGTCCCCTATTATTTACTACTACTAATAATAGCAGTATAATTGATCTGA"
+Pattern = "CTTGATCAT"
+
+# Finally, print the result of calling PatternCount on Text and Pattern.
+# Don't forget to use the notation print() with parentheses included!
+
+print (PatternCount(Text, Pattern))
+
+
+
+# Input:  A set of kmers Motifs
+# Output: CountWithPseudocounts(Motifs)
+def CountWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    # insert your code here
+    count = {}
+    for symbol in "ACGT":
+        count[symbol] = []
+        for j in range(k):
+            count[symbol].append(1)
+    for i in range(t):
+        for j in range(k):
+            symbol = Motifs[i][j]
+            count[symbol][j] += 1
+    return count
+    
+    
+    def CountWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    count = {}
+    for symbol in "ACGT":
+        count[symbol] = []
+        for j in range(k):
+            count[symbol].append(1)
+    for i in range(t):
+        for j in range(k):
+            symbol = Motifs[i][j]
+            count[symbol][j] += 1
+    return count
+
+def ProfileWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    count = CountWithPseudocounts(Motifs)
+    profile= {}
+    ## divide the number of motif strings to get frequency
+    for letter in count.keys():
+        profile[letter] = [float(x)/ (t+4) for x in count[letter]]
+    return profile
+    
+    
+    # Input:  A list of kmers Dna, and integers k and t (where t is the number of kmers in Dna)
+# Output: GreedyMotifSearch(Dna, k, t)
+def GreedyMotifSearchWithPseudocounts(Dna, k, t):
+    BestMotifs = [] # output variable
+    # your code here
+    for i in range(0, t):
+        BestMotifs.append(Dna[i][0:k])
+    n = len(Dna[0])
+    for i in range(n-k+1):
+        Motifs = []
+        Motifs.append(Dna[0][i:i+k])
+        for j in range(1, t):
+            P = ProfileWithPseudocounts(Motifs[0:j])
+            Motifs.append(ProfileMostProbablePattern(Dna[j], k, P))
+        if Score(Motifs) < Score(BestMotifs):
+            BestMotifs = Motifs
+    return BestMotifs
+
+# Copy all needed subroutines here.  These subroutines are the same used by GreedyMotifSearch(),
+# except that you should replace Count(Motifs) and Profile(Motifs) with the new functions
+# CountWithPseudocounts(Motifs) and ProfileWithPseudocounts(Motifs).
+def CountWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    count = {}
+    for symbol in "ACGT":
+        count[symbol] = []
+        for j in range(k):
+            count[symbol].append(1)
+    for i in range(t):
+        for j in range(k):
+            symbol = Motifs[i][j]
+            count[symbol][j] += 1
+    return count
+
+def ProfileWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    count = CountWithPseudocounts(Motifs)
+    profile= {}
+    ## divide the number of motif strings to get frequency
+    for letter in count.keys():
+        profile[letter] = [float(x)/ (t+4) for x in count[letter]]
+    return profile
+
+def ProfileMostProbablePattern(Text, k, Profile):
+    p_dict = {}
+    for i in range(len(Text)- k +1):
+        p = Pr(Text[i: i+k], Profile)
+        p_dict[i] = p
+    m = max(p_dict.values())
+    keys = [k for k,v in p_dict.items() if v == m]
+    ind = keys[0]
+    return Text[ind: ind +k]
+def Pr(Text, Profile):
+    # insert your code here
+    p = 1
+    for i in range(len(Text)):
+        p = p * Profile[Text[i]][i]
+    return p
+def Score(Motifs):
+    # Insert code here
+    consensus = Consensus(Motifs)
+    t = len(Motifs)
+    k = len(Motifs[0])
+    score = 0
+    for i in range(k):
+        FrequentSymbol = consensus[i]
+        for j in range(t):
+            if Motifs[j][i] != FrequentSymbol:
+                score = score + 1
+    return score
+def Profile(Motifs):
+    count = {} # initializing the count dictionary
+    profile = {}
+    k = len(Motifs[0])
+    for symbol in "ACGT":
+        count[symbol] = []
+        for j in range(k):
+            count[symbol].append(0)
+
+    t = len(Motifs)
+    for i in range(t):
+        for j in range(k):
+            symbol = Motifs[i][j]
+            count[symbol][j] += 1
+    ## divide the number of motif strings to get frequency
+    for letter in count.keys():
+        profile[letter] = [x/ float(t) for x in count[letter]]
+    return profile
+def Consensus(Motifs):
+    k = len(Motifs[0])
+    count = Count(Motifs)
+    consensus = ""
+    for j in range(k):
+        m = 0
+        frequentSymbol = ""
+        for symbol in "ACGT":
+            if count[symbol][j] > m:
+                m = count[symbol][j]
+                frequentSymbol = symbol
+        consensus += frequentSymbol
+    return consensus
+def Count(Motifs):
+    count = {} # initializing the count dictionary
+    # your code here
+    k = len(Motifs[0])
+    for symbol in "ACGT":
+        count[symbol] = []
+        for j in range(k):
+            count[symbol].append(0)
+
+    t = len(Motifs)
+    for i in range(t):
+        for j in range(k):
+            symbol = Motifs[i][j]
+            count[symbol][j] += 1    
+    return count
+
+
+
+# Copy your GreedyMotifSearchWithPseudocounts function (along with all required subroutines) from Motifs.py below this line
+def GreedyMotifSearchWithPseudocounts(Dna, k, t):
+    BestMotifs = [] # output variable
+    # your code here
+    for i in range(0, t):
+        BestMotifs.append(Dna[i][0:k])
+    n = len(Dna[0])
+    for i in range(n-k+1):
+        Motifs = []
+        Motifs.append(Dna[0][i:i+k])
+        for j in range(1, t):
+            P = ProfileWithPseudocounts(Motifs[0:j])
+            Motifs.append(ProfileMostProbablePattern(Dna[j], k, P))
+        if Score(Motifs) < Score(BestMotifs):
+            BestMotifs = Motifs
+    return BestMotifs
+def ProfileWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    count = CountWithPseudocounts(Motifs)
+    profile= {}
+    ## divide the number of motif strings to get frequency
+    for letter in count.keys():
+        profile[letter] = [float(x)/ (t+4) for x in count[letter]]
+    return profile
+
+def ProfileMostProbablePattern(Text, k, Profile):
+    p_dict = {}
+    for i in range(len(Text)- k +1):
+        p = Pr(Text[i: i+k], Profile)
+        p_dict[i] = p
+    m = max(p_dict.values())
+    keys = [k for k,v in p_dict.items() if v == m]
+    ind = keys[0]
+    return Text[ind: ind +k]
+def Pr(Text, Profile):
+    # insert your code here
+    p = 1
+    for i in range(len(Text)):
+        p = p * Profile[Text[i]][i]
+    return p
+def Score(Motifs):
+    # Insert code here
+    consensus = Consensus(Motifs)
+    t = len(Motifs)
+    k = len(Motifs[0])
+    score = 0
+    for i in range(k):
+        FrequentSymbol = consensus[i]
+        for j in range(t):
+            if Motifs[j][i] != FrequentSymbol:
+                score = score + 1
+    return score
+# Insert code here
+
+# Copy the ten strings occurring in the hyperlinked DosR dataset below.
+Dna = ["GCGCCCCGCCCGGACAGCCATGCGCTAACCCTGGCTTCGATGGCGCCGGCTCAGTTAGGGCCGGAAGTCCCCAATGTGGCAGACCTTTCGCCCCTGGCGGACGAATGACCCCAGTGGCCGGGACTTCAGGCCCTATCGGAGGGCTCCGGCGCGGTGGTCGGATTTGTCTGTGGAGGTTACACCCCAATCGCAAGGATGCATTATGACCAGCGAGCTGAGCCTGGTCGCCACTGGAAAGGGGAGCAACATC", "CCGATCGGCATCACTATCGGTCCTGCGGCCGCCCATAGCGCTATATCCGGCTGGTGAAATCAATTGACAACCTTCGACTTTGAGGTGGCCTACGGCGAGGACAAGCCAGGCAAGCCAGCTGCCTCAACGCGCGCCAGTACGGGTCCATCGACCCGCGGCCCACGGGTCAAACGACCCTAGTGTTCGCTACGACGTGGTCGTACCTTCGGCAGCAGATCAGCAATAGCACCCCGACTCGAGGAGGATCCCG", "ACCGTCGATGTGCCCGGTCGCGCCGCGTCCACCTCGGTCATCGACCCCACGATGAGGACGCCATCGGCCGCGACCAAGCCCCGTGAAACTCTGACGGCGTGCTGGCCGGGCTGCGGCACCTGATCACCTTAGGGCACTTGGGCCACCACAACGGGCCGCCGGTCTCGACAGTGGCCACCACCACACAGGTGACTTCCGGCGGGACGTAAGTCCCTAACGCGTCGTTCCGCACGCGGTTAGCTTTGCTGCC", "GGGTCAGGTATATTTATCGCACACTTGGGCACATGACACACAAGCGCCAGAATCCCGGACCGAACCGAGCACCGTGGGTGGGCAGCCTCCATACAGCGATGACCTGATCGATCATCGGCCAGGGCGCCGGGCTTCCAACCGTGGCCGTCTCAGTACCCAGCCTCATTGACCCTTCGACGCATCCACTGCGCGTAAGTCGGCTCAACCCTTTCAAACCGCTGGATTACCGACCGCAGAAAGGGGGCAGGAC", "GTAGGTCAAACCGGGTGTACATACCCGCTCAATCGCCCAGCACTTCGGGCAGATCACCGGGTTTCCCCGGTATCACCAATACTGCCACCAAACACAGCAGGCGGGAAGGGGCGAAAGTCCCTTATCCGACAATAAAACTTCGCTTGTTCGACGCCCGGTTCACCCGATATGCACGGCGCCCAGCCATTCGTGACCGACGTCCCCAGCCCCAAGGCCGAACGACCCTAGGAGCCACGAGCAATTCACAGCG", "CCGCTGGCGACGCTGTTCGCCGGCAGCGTGCGTGACGACTTCGAGCTGCCCGACTACACCTGGTGACCACCGCCGACGGGCACCTCTCCGCCAGGTAGGCACGGTTTGTCGCCGGCAATGTGACCTTTGGGCGCGGTCTTGAGGACCTTCGGCCCCACCCACGAGGCCGCCGCCGGCCGATCGTATGACGTGCAATGTACGCCATAGGGTGCGTGTTACGGCGATTACCTGAAGGCGGCGGTGGTCCGGA", "GGCCAACTGCACCGCGCTCTTGATGACATCGGTGGTCACCATGGTGTCCGGCATGATCAACCTCCGCTGTTCGATATCACCCCGATCTTTCTGAACGGCGGTTGGCAGACAACAGGGTCAATGGTCCCCAAGTGGATCACCGACGGGCGCGGACAAATGGCCCGCGCTTCGGGGACTTCTGTCCCTAGCCCTGGCCACGATGGGCTGGTCGGATCAAAGGCATCCGTTTCCATCGATTAGGAGGCATCAA", "GTACATGTCCAGAGCGAGCCTCAGCTTCTGCGCAGCGACGGAAACTGCCACACTCAAAGCCTACTGGGCGCACGTGTGGCAACGAGTCGATCCACACGAAATGCCGCCGTTGGGCCGCGGACTAGCCGAATTTTCCGGGTGGTGACACAGCCCACATTTGGCATGGGACTTTCGGCCCTGTCCGCGTCCGTGTCGGCCAGACAAGCTTTGGGCATTGGCCACAATCGGGCCACAATCGAAAGCCGAGCAG", "GGCAGCTGTCGGCAACTGTAAGCCATTTCTGGGACTTTGCTGTGAAAAGCTGGGCGATGGTTGTGGACCTGGACGAGCCACCCGTGCGATAGGTGAGATTCATTCTCGCCCTGACGGGTTGCGTCTGTCATCGGTCGATAAGGACTAACGGCCCTCAGGTGGGGACCAACGCCCCTGGGAGATAGCGGTCCCCGCCAGTAACGTACCGCTGAACCGACGGGATGTATCCGCCCCAGCGAAGGAGACGGCG", "TCAGCACCATGACCGCCTGGCCACCAATCGCCCGTAACAAGCGGGACGTCCGCGACGACGCGTGCGCTAGCGCCGTGGCGGTGACAACGACCAGATATGGTCCGAGCACGCGGGCGAACCTCGTGTTCTGGCCTCGGCCAGTTGTGTAGAGCTCATCGCTGTCATCGAGCGATATCCGACCACTGATCCAAGTCGGGGGCTCTGGGGACCGAAGTCCCCGGGCTCGGAGCTATCGGACCTCACGATCACC"]
+
+# set t equal to the number of strings in Dna and k equal to 15
+t = 10
+k = 15
+# Call GreedyMotifSearchWithPseudocounts(Dna, k, t) and store the output in a variable called Motifs
+def Motifs(Profile, Dna):
+    motifs = []
+    t = len(Dna)
+    for i in range(t):
+        motif = ProfileMostProbablePattern(Dna[i], k, Profile)
+        motifs.append(motif)
+    return motifs
+# Print the Motifs variable
+print (Motifs) 
+# Print Score(Motifs)
+def Score(Motifs):
+    consensus = Consensus(Motifs)
+    t = len(Motifs)
+    k = len(Motifs[0])
+    score = 0
+    for i in range(k):
+        FrequentSymbol = consensus[i]
+        for j in range(t):
+            if Motifs[j][i] != FrequentSymbol:
+                score = score + 1
+    return score
+print (Score)
+
+
+
+
+# Input:  A profile matrix Profile and a list of strings Dna
+# Output: Motifs(Profile, Dna)
+def Motifs(Profile, Dna):
+    motifs = []
+    t = len(Dna)
+    k = 4
+    for i in range(t):
+        motif = ProfileMostProbablePattern(Dna[i], k, Profile)
+        motifs.append(motif)
+    return motifs
+def Pr(Text, Profile):
+    p = 1
+    for i in range(len(Text)):
+        p = p * Profile[Text[i]][i]
+    return p
+    
+    # Insert your ProfileMostProbablePattern(Text, k, Profile) and Pr(Pattern, Profile) functions here.
+
+def ProfileMostProbablePattern(Text, k, Profile):
+    p_dict = {}
+    for i in range(len(Text)- k +1):
+        p = Pr(Text[i: i+k], Profile)
+        p_dict[i] = p
+    m = max(p_dict.values())
+    keys = [k for k,v in p_dict.items() if v == m]
+    ind = keys[0]
+    return Text[ind: ind +k]
+
+
+
+
+import random
+# Input:  A list of strings Dna, and integers k and t
+# Output: RandomMotifs(Dna, k, t)
+# HINT:   You might not actually need to use t since t = len(Dna), but you may find it convenient
+def RandomMotifs(Dna, k, t):
+    # place your code here.
+    motifs= []
+    for i in range(t):
+        ind = random.randint(0, len(Dna[0])-k)
+        motif = Dna[i][ind:ind +k]
+        motifs.append(motif)
+return motifs
+
+
+def RandomizedMotifSearch(Dna, k, t):
+    M = RandomMotifs(Dna, k, t)
+    BestMotifs = M
+    while True:
+        Profile = ProfileWithPseudocounts(M)
+        M = Motifs(Profile, Dna)
+        if Score(M) < Score(BestMotifs):
+            BestMotifs = M
+        else:
+            return BestMotifs 
+ 
+def ProfileWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    count = CountWithPseudocounts(Motifs)
+    profile= {}
+    ## divide the number of motif strings to get frequency
+    for letter in count.keys():
+        profile[letter] = [float(x)/ (t+4) for x in count[letter]]
+    return profile
+
+def CountWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    count = {}
+    for symbol in "ACGT":
+        count[symbol] = []
+        for j in range(k):
+            count[symbol].append(1)
+    for i in range(t):
+        for j in range(k):
+            symbol = Motifs[i][j]
+            count[symbol][j] += 1
+return count
+
+
+
+def GreedyMotifSearchWithPseudocounts(Dna, k, t):
+    BestMotifs = []
+    for i in range(0, t):
+        BestMotifs.append(Dna[i][0:k])
+    n = len(Dna[0])
+    for i in range(n-k+1):
+        Motifs = []
+        Motifs.append(Dna[0][i:i+k])
+        for j in range(1, t):
+            P = ProfileWithPseudocounts(Motifs[0:j])
+            Motifs.append(ProfileMostProbablePattern(Dna[j], k, P))
+        if Score(Motifs) < Score(BestMotifs):
+            BestMotifs = Motifs
+    return BestMotifs
+
+##################################  randomized algorithms
+def Motifs(Profile, Dna):
+    motifs = []
+    t = len(Dna)
+    #k = 4
+    for i in range(t):
+        motif = ProfileMostProbablePattern(Dna[i], k, Profile)
+        motifs.append(motif)
+    return motifs
+
+
+import random
+# Input:  A list of strings Dna, and integers k and t
+# Output: RandomMotifs(Dna, k, t)
+# HINT:   You might not actually need to use t since t = len(Dna), but you may find it convenient
+def RandomMotifs(Dna, k, t):
+    # place your code here.
+    motifs= []
+    for i in range(t):
+        ind = random.randint(0, len(Dna[0])-k)
+        motif = Dna[i][ind:ind +k]
+        motifs.append(motif)
+    return motifs
+
+def RandomizedMotifSearch(Dna, k, t):
+    M = RandomMotifs(Dna, k, t)
+    BestMotifs = M
+     while True:
+        Profile = ProfileWithPseudocounts(M)
+        M = Motifs(Profile, Dna)
+        if Score(M) < Score(BestMotifs):
+            BestMotifs = M
+        else:
+            return BestMotifs 
+    
+##########################
+# import the random package here
+import random
+# Input:  Positive integers k and t, followed by a list of strings Dna
+# Output: RandomizedMotifSearch(Dna, k, t)
+def Motifs(Profile, Dna):
+    motifs = []
+    t = len(Dna)
+    for i in range(t):
+        motif = ProfileMostProbablePattern(Dna[i], k, Profile)
+        motifs.append(motif)
+    return motifs
+
+
+import random
+# Input:  A list of strings Dna, and integers k and t
+# Output: RandomMotifs(Dna, k, t)
+# HINT:   You might not actually need to use t since t = len(Dna), but you may find it convenient
+def RandomMotifs(Dna, k, t):
+    # place your code here.
+    motifs= []
+    for i in range(t):
+        ind = random.randint(0, len(Dna[0])-k)
+        motif = Dna[i][ind:ind +k]
+        motifs.append(motif)
+    return motifs
+
+def RandomizedMotifSearch(Dna, k, t):
+    M = RandomMotifs(Dna, k, t)
+    BestMotifs = M
+    while True:
+        Profile = ProfileWithPseudocounts(M)
+        M = Motifs(Profile, Dna)
+        if Score(M) < Score(BestMotifs):
+            BestMotifs = M
+        else:
+            return BestMotifs 
+ 
+def ProfileWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    count = CountWithPseudocounts(Motifs)
+    profile= {}
+    ## divide the number of motif strings to get frequency
+    for letter in count.keys():
+        profile[letter] = [float(x)/ (t+4) for x in count[letter]]
+    return profile
+
+def CountWithPseudocounts(Motifs):
+    t = len(Motifs)
+    k = len(Motifs[0])
+    count = {}
+    for symbol in "ACGT":
+        count[symbol] = []
+        for j in range(k):
+            count[symbol].append(1)
+    for i in range(t):
+        for j in range(k):
+            symbol = Motifs[i][j]
+            count[symbol][j] += 1
+    return count
+# Insert necessary subroutines here, including RandomMotifs(), ProfileWithPseudocounts(), Motifs(), Score(),
+# and any subroutines that these functions need.
+def Pr(Text, Profile):
+    p = 1
+    for i in range(len(Text)):
+        p = p * Profile[Text[i]][i]
+    return p
+
+def ProfileMostProbablePattern(Text, k, Profile):
+    p_dict = {}
+    for i in range(len(Text)- k +1):
+        p = Pr(Text[i: i+k], Profile)
+        p_dict[i] = p
+    m = max(p_dict.values())
+    keys = [k for k,v in p_dict.items() if v == m]
+    ind = keys[0]
+    return Text[ind: ind +k]
+
+def Consensus(Motifs):
+    k = len(Motifs[0])
+    count = CountWithPseudocounts(Motifs)
+    consensus = ""
+    for j in range(k):
+        m = 0
+        frequentSymbol = ""
+        for symbol in "ACGT":
+            if count[symbol][j] > m:
+                m = count[symbol][j]
+                frequentSymbol = symbol
+        consensus += frequentSymbol
+    return consensus
+
+def Score(Motifs):
+    consensus = Consensus(Motifs)
+    t = len(Motifs)
+    k = len(Motifs[0])
+    score = 0
+    for i in range(k):
+        FrequentSymbol = consensus[i]
+        for j in range(t):
+            if Motifs[j][i] != FrequentSymbol:
+                score = score + 1
+    return score
+### DO NOT MODIFY THE CODE BELOW THIS LINE ###
+def RepeatedRandomizedMotifSearch(Dna, k, t):
+    BestScore = float('inf')
+    BestMotifs = []
+    for i in range(1000):
+        Motifs = RandomizedMotifSearch(Dna, k, t)
+        CurrScore = Score(Motifs)
+        if CurrScore < BestScore:
+            BestScore = CurrScore
+            BestMotifs = Motifs
+    return BestMotifs
+
+
+
+
+# first, import the random package
+import random
+# then, copy Pr, Normalize, and WeightedDie below this line
+def Normalize(Probabilities):
+    probability_sum = sum(Probabilities.values())
+    for key, value in sorted(Probabilities.items()):
+        Probabilities[key] = value / probability_sum
+    return Probabilities
+def WeightedDie(Probabilities):
+    kmer = '' # output variable
+    # your code here    
+    kmerProbabilityRangeMap = {}
+    kmerProbSum=sum(Probabilities.values())
+    kmerProbInterimSum=0.0
+    counter=0    
+    probList = list(Probabilities.values());    
+    probListLen=len(probList)-1
+    for key,value in Probabilities.items():                
+        if counter == 0:
+            kmerProbabilityRangeMap[key]=[0,float(value)]
+            counter=counter+1
+            kmerProbInterimSum=float(value)
+        elif counter > 0 and counter < probListLen:
+            tmp=kmerProbInterimSum+probList[counter]
+            kmerProbabilityRangeMap[key]=[kmerProbInterimSum,tmp]
+            kmerProbInterimSum=kmerProbInterimSum+probList[counter]
+            counter=counter+1
+        elif counter == probListLen:
+            kmerProbabilityRangeMap[key]=[kmerProbInterimSum,kmerProbSum]
+     
+    while True:
+    #for lu in range(0,10000,1):
+        randomRoundPr = random.uniform(0, 1)
+        for key,value in kmerProbabilityRangeMap.items():            
+            if randomRoundPr >= value[0] and randomRoundPr <=value[1]:
+                #print(key,randomRoundPr)
+                kmer =key
+                #break
+        break                
+    return kmer
+def Pr(Text, Profile):
+    p = 1
+    # loop through each index(char) in text
+    for index,char in enumerate(Text):
+        for key, profile_lists in sorted(Profile.items()):
+            if char == key:
+                p *= profile_lists[index]
+    return p
+
+# Input:  A string Text, a profile matrix Profile, and an integer k
+# Output: ProfileGeneratedString(Text, profile, k)
+def ProfileGeneratedString(Text, profile, k):
+    n = len(Text)
+    probabilities = {} 
+    for i in range(0,n-k+1):
+        probabilities[Text[i:i+k]] = Pr(Text[i:i+k], profile)
+    probabilities = Normalize(probabilities)
+    return WeightedDie(probabilities)
+
+
+# Input: Strings Genome and symbol
+
+def PatternCount(Pattern, Text):
+    count = 0
+    for i in range(len(Text)-len(Pattern)+1):
+        if Text[i:i+len(Pattern)] == Pattern:
+             count = count+1
+    return count
+
+def SymbolArray(Genome, symbol):
+    array = {}
+    n = len(Genome)
+    ExtendedGenome = Genome + Genome[0:n//2]
+    for i in range(n):
+        array[i] = PatternCount(symbol, ExtendedGenome[i:i+(n//2)])
+    return array
+Genome = "AAAAGGGG"
+symbol = "A"
+
+
+# Input:  Strings Genome and symbol
+# Output: FasterSymbolArray(Genome, symbol)
+def FasterSymbolArray(Genome, symbol):
+    array = {}
+    # your code here
+    n = len(Genome)
+    ExtendedGenome = Genome + Genome[0:n//2]
+    array[0] = PatternCount(symbol, Genome[0:n//2])
+    for i in range(1, n):
+        array[i] = array[i-1]
+        if ExtendedGenome[i-1] == symbol:
+            array[i] = array[i]-1
+        if ExtendedGenome[i+(n//2)-1] == symbol:
+            array[i] = array[i]+1    
+    return array
+
+# Input:  Strings Text and Pattern
+# Output: The number of times Pattern appears in Text
+# HINT:   This code should be identical to when you last implemented PatternCount
+def PatternCount(Pattern, Text):
+    count = 0 # output variable
+    # your code here
+    for i in range(len(Text)-len(Pattern)+1):
+        if Text[i:i+len(Pattern)] == Pattern:
+            count = count+1    
+    return count
+
+### DO NOT MODIFY THE CODE BELOW THIS LINE ###
+import sys
+lines = sys.stdin.read().splitlines()
+print(FasterSymbolArray(lines[0],lines[1]))
+
+
+# Input:  A String Genome
+# Output: The skew array of Genome as a list.
+
+def SkewArray(Genome):
+    """Define Skew of Genome as the difference between the total number of 
+    occurrences of G and C in the first i nucleotides of Genome, where i 
+    ranges from 0 to |Genome|. Let prefix_i of Genome denote a prefix 
+    (i.e, an initial substring) of Genome with length i.
+    Genome => A DNA string
+    Return: The list of the skews of Genome at prefix_i, i = 0,...,|Genome|"""
+
+    # For prefix_i = 0, the skew of Genome is 0
+    skew = [0]
+
+    for i in range(0, len(Genome)):
+        # i changes meaning depending on the context:
+        #   - When applied to Genome it means the ith nucleotide.
+        #   - When applied to skew, i means the skew of Genome
+        #     at prefix_i.
+        if Genome[i] == 'C':
+            skew.append(skew[i] - 1)
+        elif Genome[i] == 'G':
+            skew.append(skew[i] + 1)
+        else:
+            skew.append(skew[i])
+    return skew
+
+
+# Input:  A DNA string Genome
+# Output: A list containing all integers i minimizing Skew(Prefix_i(Text)) over all values of i (from 0 to |Genome|)
+def MinimumSkew(Genome):
+    positions = [] # output variable
+    skew = Skew(Genome)
+    minimum = min(skew.values())
+    for i in range(len(Genome)):
+        if skew[i] == minimum:
+            positions.append(i)
+    return positions
+
+# Input:  A String Genome
+# Output: SkewArray(Genome)
+# HINT:   This code should be taken from the last Code Challenge.
+def Skew(Genome):
+    skew = {} #initializing the dictionary
+    skew[0] = 0
+    for i in range(len(Genome)):
+        if Genome[i] == "C":
+            skew[i + 1] = skew[i]  -1
+        elif Genome[i] == "G":
+            skew[i +1] = skew[i] +1
+        else:
+            skew[i+1] = skew[i]
+    # your code here
+    return skew
+    
+    
+    
+    ef HammingDistance(p, q):
+    # your code here
+    count = 0
+    for i in range(len(p)):
+        if p[i] != q[i]:
+            count += 1
+    return count
+
+def PatternMatching(Pattern, Genome):
+    positions = [] # output variable
+    # your code here
+    count = 0
+    for i in range(len(Genome)-len(Pattern)+1):
+        if Genome[i:i+len(Pattern)] == Pattern:
+            count = count+1
+            positions.append(i)
+return positions
+
+
+
+# Input:  Strings Pattern and Text along with an integer d
+# Output: A list containing all starting positions where Pattern appears
+# as a substring of Text with at most d mismatches
+def ApproximatePatternMatching(Text, Pattern, d):
+    positions = [] # initializing list of positions
+    # your code here
+    for i in range(len(Text)-len(Pattern)+1):
+        x = Text[i:i+len(Pattern)+1]
+        if x != Pattern:
+            y = HammingDistance(Pattern,x)
+            if y <= d:
+                positions.append(i)
+    return positions
+
+
+# Insert your Hamming distance function on the following line.
+def HammingDistance(p, q):
+    d = 0
+    for p, q in zip(p, q): # your code here
+        if p!= q:
+            d += 1
+    return d
+
+
+
+# Input:  Strings Pattern and Text, and an integer d
+# Output: The number of times Pattern appears in Text with at most d mismatches
+def ApproximatePatternCount(Pattern, Text, d):
+    positions = [] # initializing list of positions
+    for i in range(len(Text)- len(Pattern) +1):
+        if HammingDistance(Pattern, Text[i:i + len(Pattern)]) <= d:
+            positions.append(i)
+    return len(positions)    
+    
+
+
+# Insert your HammingDistance function on the following line.
+def HammingDistance(p, q):
+    # your code here
+    dist = 0
+    for i in range(len(p)):
+        if p[i] != q[i]:
+            dist +=1
+    return dist
+
+### DO NOT MODIFY THE CODE BELOW THIS LINE ###
+import sys
+lines = sys.stdin.read().splitlines()
+print(ApproximatePatternCount(lines[0],lines[1],int(lines[2])))
+
+
+
+
+# Copy your Consensus(Motifs) function here.
+def Consensus(Motifs):
+    k = len(Motifs[0])
+    count = Count(Motifs)
+    consensus = ""
+    for j in range(k):
+        m = 0
+        frequentSymbol = ""
+        for symbol in "ACGT":
+            if count[symbol][j] > m:
+                m = count[symbol][j]
+                frequentSymbol = symbol
+        consensus += frequentSymbol
+    return consensus
+# Copy your Count(Motifs) function here.
+def Count(Motifs):
+    count = {} # initializing the count dictionary
+    # your code here
+    k = len(Motifs[0])
+    for symbol in "ACGT":
+        count[symbol] = []
+        for j in range(k):
+            count[symbol].append(0)
+    t = len(Motifs)
+    for i in range(t):
+        for j in range(k):
+            symbol = Motifs[i][j]
+            count[symbol][j] += 1           
+    return count       
+
+# Input:  A set of k-mers Motifs
+# Output: The score of these k-mers.
+def Score(Motifs):
+    # Insert code here
+    consensus = Consensus(Motifs)
+    t = len(Motifs)
+    k = len(Motifs[0])
+    score = 0
+    for i in range(k):
+        FrequentSymbol = consensus[i]
+        for j in range(t):
+            if Motifs[j][i] != FrequentSymbol:
+                score = score + 1
+    return score    
+    
+    
+    
+    
+def ProfileMostProbableKmer(Text, k, Profile):
+    p_dict = {}
+    for i in range(len(Text)- k +1):
+        p = Pr(Text[i: i+k], Profile)
+        p_dict[i] = p
+    m = max(p_dict.values())
+    keys = [k for k,v in p_dict.items() if v == m]
+    ind = keys[0]
+    return Text[ind: ind +k]
+def Pr(Text, Profile):
+    p = 1
+    for i in range(len(Text)):
+        p = p * Profile[Text[i]][i]
+    return p
+    
+    
+
